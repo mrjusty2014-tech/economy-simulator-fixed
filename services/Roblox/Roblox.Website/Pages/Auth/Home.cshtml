@@ -120,6 +120,10 @@
             <p class="text-center">You have to fill out an application to join. This is done to prevent bots and other malicious players from joining. Click the button below to fill out an application.</p>
             <p class="text-center">
                 <a href="/auth/application" class="btn btn-primary">Apply</a>
+                @if (Model.isStaff)
+                {
+                    <a href="/admin" class="btn btn-outline-secondary ms-2">Admin Panel</a>
+                }
             </p>
         </div>
     </div>
