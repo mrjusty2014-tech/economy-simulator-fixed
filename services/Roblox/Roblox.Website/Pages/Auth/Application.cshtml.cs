@@ -101,6 +101,12 @@ public class Application : RobloxPageModel
         }
         await ApplyBanner();
         await ApplyApplication();
+
+        if (HCaptcha.IsDevelopmentBypassEnabled && application is { status: UserApplicationStatus.Pending })
+        {
+            await services.users.ProcessApplication(application.id, 1, UserApplicationStatus.Approved);
+            await ApplyApplication();
+        }
         
         try
         {
