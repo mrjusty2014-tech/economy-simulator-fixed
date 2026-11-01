@@ -2,7 +2,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Roblox.Exceptions;
 using Roblox.Libraries.Captcha;
-using Roblox.Libraries.EasyJwt;
 using Roblox.Logging;
 using Roblox.Models.Users;
 using Roblox.Services;

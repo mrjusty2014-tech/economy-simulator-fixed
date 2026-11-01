@@ -4,7 +4,6 @@ using Roblox.Dto.Assets;
 using Roblox.Exceptions;
 using Roblox.Models;
 using Roblox.Models.Assets;
-using Roblox.Services.Exceptions;
 using Roblox.Website.WebsiteModels.Catalog;
 using Type = Roblox.Models.Assets.Type;
 

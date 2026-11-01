@@ -1,5 +1,3 @@
-using System.Diagnostics;
-using Microsoft.AspNetCore.Http.Extensions;
 using Roblox.Website.Lib;
 
 namespace Roblox.Website.Middleware;

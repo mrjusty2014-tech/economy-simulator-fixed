@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using Dapper;
 using Roblox.Dto.Users;
 using Roblox.Logging;

@@ -1,7 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Roblox.Models.Sessions;
-using Roblox.Services;
 
 namespace Roblox.Website.Pages.Auth;
 

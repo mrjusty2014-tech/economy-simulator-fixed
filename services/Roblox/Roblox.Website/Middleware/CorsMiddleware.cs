@@ -1,5 +1,3 @@
-using Microsoft.AspNetCore.Http.Extensions;
-
 namespace Roblox.Website.Middleware;
 
 public class RobloxPlayerCorsMiddleware

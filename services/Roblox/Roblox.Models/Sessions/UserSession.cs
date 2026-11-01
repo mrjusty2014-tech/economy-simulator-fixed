@@ -1,5 +1,4 @@
 using System.Text.Json.Serialization;
-using Roblox.Models.Users;
 
 namespace Roblox.Models.Sessions
 {

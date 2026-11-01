@@ -1,16 +1,13 @@
 using System.Text.Json;
-using System.Text.Json.Serialization;
 using JWT;
 using JWT.Algorithms;
 using JWT.Exceptions;
 using JWT.Serializers;
-using Microsoft.AspNetCore.Http.Extensions;
 using Roblox.Dto.Users;
 using Roblox.Models.Sessions;
 using Roblox.Models.Users;
 using Roblox.Services;
 using Roblox.Services.Exceptions;
-using Roblox.Website.Controllers;
 using Roblox.Website.Filters;
 using Roblox.Website.Lib;
 using ServiceProvider = Roblox.Services.ServiceProvider;

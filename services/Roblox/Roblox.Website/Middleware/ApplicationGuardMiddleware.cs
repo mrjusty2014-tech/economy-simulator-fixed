@@ -1,11 +1,8 @@
 using System.Diagnostics;
 using System.Diagnostics.CodeAnalysis;
 using System.Runtime.CompilerServices;
-using System.Text.RegularExpressions;
-using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Net.Http.Headers;
 using Roblox.Libraries.EasyJwt;
-using Roblox.Libraries.Password;
 using Roblox.Logging;
 using Roblox.Models.Sessions;
 using Roblox.Services.App.FeatureFlags;

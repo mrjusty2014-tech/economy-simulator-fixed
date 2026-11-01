@@ -1,7 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Roblox.Dto.Users;
 using Roblox.Exceptions;
-using Roblox.Services.DbModels;
 using Roblox.Models;
 
 namespace Roblox.Website.Controllers;

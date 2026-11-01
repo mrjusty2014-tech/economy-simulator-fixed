@@ -3,7 +3,6 @@ using Dapper;
 using Roblox.Dto;
 using Roblox.Dto.Friends;
 using Roblox.Dto.Users;
-using Roblox.Libraries.Cursor;
 using Roblox.Metrics;
 using Roblox.Models;
 using Roblox.Models.Users;

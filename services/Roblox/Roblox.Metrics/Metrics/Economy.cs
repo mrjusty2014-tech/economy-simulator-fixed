@@ -1,7 +1,6 @@
 using System.Diagnostics;
 using InfluxDB.Client.Api.Domain;
 using InfluxDB.Client.Writes;
-using Roblox.Logging;
 
 namespace Roblox.Metrics;
 

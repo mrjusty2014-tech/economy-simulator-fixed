@@ -1,7 +1,6 @@
 using System.Text.Json;
 using JWT;
 using JWT.Algorithms;
-using JWT.Serializers;
 
 namespace Roblox.Libraries.EasyJwt;
 

@@ -1,17 +1,8 @@
-using System.Text.RegularExpressions;
 using Roblox.Dto.Avatar;
-using Roblox.Dto.Users;
-using Roblox.Models.Assets;
 using Roblox.Models.Avatar;
-using Roblox.Models.Users;
-using Roblox.Rendering;
 using Roblox.Services;
-using Roblox.Services.App.FeatureFlags;
-using Roblox.Services.Exceptions;
 using Roblox.Website.WebsiteModels.Asset;
-using BadRequestException = Roblox.Exceptions.BadRequestException;
 using ServiceProvider = Roblox.Services.ServiceProvider;
-using Type = Roblox.Models.Assets.Type;
 
 namespace Roblox.Website.Controllers
 {

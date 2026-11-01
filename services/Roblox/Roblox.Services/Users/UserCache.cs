@@ -1,6 +1,4 @@
 using Roblox.Dto.Users;
-using Roblox.Logging;
-using Roblox.Models.Sessions;
 using Roblox.Models.Users;
 
 namespace Roblox.Services;

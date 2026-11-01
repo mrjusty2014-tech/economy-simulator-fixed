@@ -1,5 +1,3 @@
-using System.Xml;
-
 namespace Roblox.Libraries.Assets
 {
     public static class ContentFormatters

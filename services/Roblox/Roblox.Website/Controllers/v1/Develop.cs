@@ -3,7 +3,6 @@ using Microsoft.AspNetCore.Mvc;
 using Roblox.Dto.Games;
 using Roblox.Exceptions;
 using Roblox.Models;
-using Roblox.Models.Assets;
 using Roblox.Website.WebsiteModels.Catalog;
 
 namespace Roblox.Website.Controllers;

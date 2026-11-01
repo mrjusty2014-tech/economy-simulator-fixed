@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
 using Roblox.Libraries.EasyJwt;
-using Roblox.Libraries.Password;
 using Roblox.Models.Sessions;
 
 namespace Roblox.Website.Pages.Auth;

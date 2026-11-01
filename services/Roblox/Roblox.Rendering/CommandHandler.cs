@@ -4,7 +4,6 @@ using System.Net.WebSockets;
 using System.Text;
 using System.Text.Json;
 using System.Web;
-using Roblox.Logging;
 
 namespace Roblox.Rendering
 {

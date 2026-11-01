@@ -1,5 +1,3 @@
-using System.Text.Json.Serialization;
-
 namespace Roblox.Website.WebsiteModels.Games;
 
 public class JoinGameRequest

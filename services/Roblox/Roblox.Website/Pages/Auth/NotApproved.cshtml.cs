@@ -1,10 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Roblox.Dto.Users;
-using Roblox.Models.Sessions;
 using Roblox.Models.Users;
 using Roblox.Services.Exceptions;
-using Roblox.Website.Controllers;
 
 namespace Roblox.Website.Pages;
 

@@ -8,7 +8,6 @@ using Roblox.Dto.Economy;
 using Roblox.Dto.Users;
 using Roblox.Exceptions.Services.Users;
 using Roblox.Libraries;
-using Roblox.Libraries.Exceptions;
 using Roblox.Libraries.Password;
 using Roblox.Logging;
 using Roblox.Metrics;

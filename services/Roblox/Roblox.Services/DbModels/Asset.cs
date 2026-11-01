@@ -1,4 +1,3 @@
-using Dapper.Contrib.Extensions;
 using Roblox.Models.Assets;
 
 namespace Roblox.Services.DbModels

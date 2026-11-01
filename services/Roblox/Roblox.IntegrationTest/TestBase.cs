@@ -5,16 +5,12 @@ using System.Net.Http;
 using System.Threading;
 using System.Threading.Tasks;
 using Dapper;
-using FFMpegCore.Enums;
 using Npgsql;
 using Roblox.Models.Assets;
 using Roblox.Models.Sessions;
 using Roblox.Models.Users;
 using Roblox.Services.App.FeatureFlags;
 using Roblox.Website.Controllers;
-using SixLabors.ImageSharp;
-using SixLabors.ImageSharp.PixelFormats;
-using Type = System.Type;
 
 namespace Roblox.Services.IntegrationTest;
 

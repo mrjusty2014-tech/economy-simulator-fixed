@@ -1,7 +1,5 @@
 using Microsoft.AspNetCore.Mvc.Filters;
 using Microsoft.Net.Http.Headers;
-using Roblox.Models.Sessions;
-using Roblox.Models.Staff;
 
 namespace Roblox.Website.Filters;
 

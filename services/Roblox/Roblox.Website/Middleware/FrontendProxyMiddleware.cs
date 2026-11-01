@@ -1,13 +1,7 @@
-using System.Net;
-using System.Text;
 using Microsoft.AspNetCore.Http.Extensions;
 using Microsoft.Net.Http.Headers;
 using Roblox.Logging;
-using Roblox.Models.Sessions;
-using Roblox.Models.Users;
-using Roblox.Services;
 using Roblox.Website.Lib;
-using ServiceProvider = Microsoft.Extensions.DependencyInjection.ServiceProvider;
 
 namespace Roblox.Website.Middleware;
 

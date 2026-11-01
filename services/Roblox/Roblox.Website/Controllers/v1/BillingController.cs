@@ -1,5 +1,4 @@
 using Microsoft.AspNetCore.Mvc;
-using Roblox.Exceptions;
 
 namespace Roblox.Website.Controllers;
 

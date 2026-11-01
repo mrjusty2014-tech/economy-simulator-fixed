@@ -1,7 +1,6 @@
 using RedLockNet.SERedis;
 using RedLockNet.SERedis.Configuration;
 using Roblox.Cache;
-using StackExchange.Redis;
 
 namespace Roblox.Services;
 

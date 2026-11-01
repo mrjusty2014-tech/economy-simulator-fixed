@@ -1,5 +1,4 @@
 using System.Diagnostics;
-using System.Dynamic;
 using System.Security.Cryptography;
 using System.Text.Json;
 using System.Text.RegularExpressions;
@@ -19,8 +18,6 @@ using Roblox.Rendering;
 using Roblox.Services.App.FeatureFlags;
 using Roblox.Services.DbModels;
 using Roblox.Services.Exceptions;
-using SixLabors.ImageSharp;
-using AssetId = Roblox.Dto.Assets.AssetId;
 using MultiGetEntry = Roblox.Dto.Assets.MultiGetEntry;
 using Type = Roblox.Models.Assets.Type;
 
