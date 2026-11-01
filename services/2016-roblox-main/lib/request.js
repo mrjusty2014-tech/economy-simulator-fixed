@@ -3,11 +3,26 @@ import config from '../lib/config';
 let _csrf = '';
 
 const getFullUrl = (apiSite, fullUrl) => {
+  if (typeof window !== 'undefined' && isLocalBackend()) {
+    return `${window.location.origin}/apisite/${apiSite}${fullUrl}`;
+  }
   return config.publicRuntimeConfig.backend.apiFormat.replace(/\{0\}/g, apiSite).replace(/\{1\}/g, fullUrl);
 }
 
 const getBaseUrl = () => {
+  if (typeof window !== 'undefined' && isLocalBackend()) {
+    return window.location.origin;
+  }
   return config.publicRuntimeConfig.backend.baseUrl;
+}
+
+const isLocalBackend = () => {
+  try {
+    const hostname = new URL(config.publicRuntimeConfig.backend.baseUrl).hostname;
+    return hostname === 'localhost' || hostname === '127.0.0.1';
+  } catch {
+    return false;
+  }
 }
 
 const getUrlWithProxy = (url) => {
