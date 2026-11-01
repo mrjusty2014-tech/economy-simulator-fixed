@@ -349,6 +349,12 @@ public class ApplicationGuardMiddleware
             uaBypassWatch.Stop();
             Writer.Info(LogGroup.AbuseDetection, "took {0}ms to parse ua bypass cookie", uaBypassWatch.ElapsedMilliseconds);
         }
+        if (Roblox.Libraries.Captcha.HCaptcha.IsDevelopmentBypassEnabled)
+        {
+            uaBlocked = false;
+            bypassOk = true;
+        }
+
         if (uaBlocked && !bypassAllowedForPath)
         {
             ctx.Response.StatusCode = 302;
