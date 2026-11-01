@@ -16,6 +16,14 @@ public class HCaptcha
     {
         try
         {
+            if (string.IsNullOrWhiteSpace(Roblox.Configuration.HCaptchaPrivateKey) ||
+                string.IsNullOrWhiteSpace(Roblox.Configuration.HCaptchaPublicKey) ||
+                string.IsNullOrWhiteSpace(captchaResponse))
+            {
+                Writer.Info(LogGroup.Captcha, "Captcha verification skipped because configuration or response is missing");
+                return false;
+            }
+
             var cont = new FormUrlEncodedContent(new Dictionary<string,string>
             {
                 {"response", captchaResponse},
@@ -24,7 +32,7 @@ public class HCaptcha
                 {"sitekey", Roblox.Configuration.HCaptchaPublicKey},
             });
 
-            var result = await client.PostAsync("https://hcaptcha.com/siteverify", cont);
+            var result = await client.PostAsync("https://api.hcaptcha.com/siteverify", cont);
             var str = await result.Content.ReadAsStringAsync();
             if (result.StatusCode != HttpStatusCode.OK)
             {
