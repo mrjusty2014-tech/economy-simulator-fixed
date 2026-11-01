@@ -5,7 +5,7 @@ const IndexPage = props => {
   const auth = AuthenticationStore.useContainer();
   useEffect(() => {
     if (auth.isPending) return;
-    window.location.replace(auth.isAuthenticated ? '/home' : '/auth/home');
+    window.location.replace(auth.isAuthenticated ? '/home' : '/login');
   }, [auth.isPending, auth.isAuthenticated]);
 
   return null;

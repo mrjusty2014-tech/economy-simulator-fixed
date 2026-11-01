@@ -9,7 +9,7 @@ export default function AuthenticatedHomePage() {
 
   useEffect(() => {
     if (!auth.isPending && !auth.isAuthenticated) {
-      window.location.replace('/auth/home');
+      window.location.replace('/login');
     }
   }, [auth.isPending, auth.isAuthenticated]);
 
