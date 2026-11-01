@@ -19,7 +19,7 @@ public class Captcha : RobloxPageModel
 
     public async Task<IActionResult> OnPost()
     {
-        if (string.IsNullOrEmpty(hCaptchaResponse))
+        if (!Roblox.Libraries.Captcha.HCaptcha.IsDevelopmentBypassEnabled && string.IsNullOrEmpty(hCaptchaResponse))
         {
             HttpContext.Response.StatusCode = 401;
             return Page();

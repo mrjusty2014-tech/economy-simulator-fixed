@@ -12,10 +12,20 @@ internal class HCaptchaJsonResponse
 public class HCaptcha
 {
     private static HttpClient client { get; } = new();
+    public static bool IsDevelopmentBypassEnabled =>
+        string.Equals(Environment.GetEnvironmentVariable("ASPNETCORE_ENVIRONMENT"), "Development", StringComparison.OrdinalIgnoreCase) &&
+        bool.TryParse(Environment.GetEnvironmentVariable("HCaptcha__DisableInDevelopment"), out var enabled) &&
+        enabled;
+
+    public static bool IsEnabled => !IsDevelopmentBypassEnabled;
+
     public static async Task<bool> IsValid(string rawIpAddress, string captchaResponse)
     {
         try
         {
+            if (IsDevelopmentBypassEnabled)
+                return true;
+
             if (string.IsNullOrWhiteSpace(Roblox.Configuration.HCaptchaPrivateKey) ||
                 string.IsNullOrWhiteSpace(Roblox.Configuration.HCaptchaPublicKey) ||
                 string.IsNullOrWhiteSpace(captchaResponse))
