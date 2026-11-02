@@ -13,7 +13,14 @@ export default function AuthenticatedHomePage() {
     }
   }, [auth.isPending, auth.isAuthenticated]);
 
-  if (auth.isPending || !auth.isAuthenticated) return null;
+  if (auth.isPending) {
+    return <main className="container mt-5">
+      <p>Loading your account...</p>
+      <a href="/auth/home">Continue to the application page</a>
+    </main>;
+  }
+
+  if (!auth.isAuthenticated) return null;
 
   return <Theme2016>
     <DashboardStore.Provider>
