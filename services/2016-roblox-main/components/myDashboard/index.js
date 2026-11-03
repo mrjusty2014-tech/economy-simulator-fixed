@@ -53,7 +53,7 @@ const useStyles = createUseStyles({
   },
 });
 
-const MyDashboard = props => {
+const MyDashboard = ({ guestMode = false }) => {
   const s = useStyles();
   const cardStyles = useCardStyles();
   const auth = AuthenticationStore.useContainer();
@@ -61,7 +61,7 @@ const MyDashboard = props => {
   const [gameSorts, setGameSorts] = useState(null);
   const [icons, setIcons] = useState({});
   useEffect(() => {
-    if (!auth.userId) return;
+    if (!auth.userId || guestMode) return;
     getFriends({
       userId: auth.userId,
     }).then(d => {
@@ -69,7 +69,7 @@ const MyDashboard = props => {
         setFriends(d);
       }
     });
-  }, [auth.userId]);
+  }, [auth.userId, guestMode]);
 
   useEffect(() => {
     getGameSorts({
@@ -105,12 +105,15 @@ const MyDashboard = props => {
     })
   }, []);
 
-  if (!auth.userId) return null;
+  if (!auth.userId && !guestMode) return null;
   return <div className={'container ' + s.container}>
     <div className='row'>
-      <div className='d-none d-lg-flex col-2'><AdSkyscraper context='dashboard-left' /></div>
-      <div className={'col-12 col-lg-8 ' + s.mainBody}>
-        <div className='row'>
+      {!guestMode && <div className='d-none d-lg-flex col-2'><AdSkyscraper context='dashboard-left' /></div>}
+      <div className={guestMode ? 'col-12' : 'col-12 col-lg-8 ' + s.mainBody}>
+        {guestMode ? <div className='d-flex justify-content-between align-items-center flex-wrap gap-2 mt-3 mb-3'>
+          <h1 className={s.subHeader}>Popular and trending games</h1>
+          <a href='/auth/application' className='btn btn-primary'>Sign Up</a>
+        </div> : <div className='row'>
           <div className='col-3'>
             <div className={s.headshotWrapper}>
               <PlayerHeadshot id={auth.userId} name={auth.username} />
@@ -119,8 +122,8 @@ const MyDashboard = props => {
           <div className='col-9'>
             <h3 className={s.helloMessage}>Hello, {auth.username}!</h3>
           </div>
-        </div>
-        {friends && <div className='row mt-4'>
+        </div>}
+        {!guestMode && friends && <div className='row mt-4'>
           <div className='col-12'>
             <h3 className={s.subHeader}>Friends ({friends.length})</h3>
             <div className={'card pt-3 pb-3 ps-3 pe-2 ' + s.card}>
@@ -140,7 +143,7 @@ const MyDashboard = props => {
             return <GameRow key={v.token} title={v.displayName} games={v.games} icons={icons} />
           })
         }
-        {getFlag('userFeedEnabled', true) ? <div className='row mt-4'>
+        {!guestMode && getFlag('userFeedEnabled', true) ? <div className='row mt-4'>
           <div className='col-12 col-md-6'>
             <div className={cardStyles.card}>
               <div className='p-2'>
@@ -151,7 +154,7 @@ const MyDashboard = props => {
           </div>
         </div> : null}
       </div>
-      <div className='d-none d-lg-flex col-2'><AdSkyscraper context='dashboard-right'></AdSkyscraper></div>
+      {!guestMode && <div className='d-none d-lg-flex col-2'><AdSkyscraper context='dashboard-right'></AdSkyscraper></div>}
     </div>
   </div>
 }

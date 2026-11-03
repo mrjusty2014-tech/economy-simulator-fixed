@@ -64,8 +64,8 @@ const LoginModal = props => {
   return <div className={s.wrapper}>
     <div className={s.card}>
       {error && <p className='text-danger mb-0'>{error}</p>}
-      <input ref={userRef} className={`form-control ${s.input}`} type='text' placeholder='Username'></input>
-      <input ref={passRef} className={`form-control ${s.input}`} type='password' placeholder='Password'></input>
+      <input ref={userRef} className={`form-control ${s.input}`} type='text' placeholder='Username' autoComplete='username'></input>
+      <input ref={passRef} className={`form-control ${s.input}`} type='password' placeholder='Password' autoComplete='current-password'></input>
       <div className='row'>
         <div className='col-6'>
           <button disabled={locked} className={`btn ${s.btnPrimary} ${s.btn}`} onClick={(e) => {
@@ -79,7 +79,7 @@ const LoginModal = props => {
             })
               .catch(e => {
                 if (e.response && e.response.data) {
-                  setError(e.response.data.errors[0].message);
+                  setError(e.response.data.errors?.[0]?.message || 'Login failed. Check your username and password.');
                 } else {
                   setError(e.message);
                 }
@@ -90,13 +90,16 @@ const LoginModal = props => {
           }}>Log In</button>
         </div>
         <div className='col-6'>
-          <button className={`btn ${s.btnSecondary} ${s.btn}`}>Sign up</button>
+          <a href='/auth/application' className={`btn ${s.btnSecondary} ${s.btn}`}>Sign Up</a>
         </div>
       </div>
       <div className='row mt-2'>
         <div className='col-12'>
           <p>
             <a className={s.forgotPass} href='/auth/password-reset'>Forgot Password?</a>
+          </p>
+          <p className='mb-0 mt-2'>
+            <a className={s.forgotPass} href='/auth/application'>Not accepted? Check your application</a>
           </p>
         </div>
       </div>
