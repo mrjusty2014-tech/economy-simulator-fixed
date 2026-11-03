@@ -43,6 +43,7 @@ trap cleanup EXIT INT TERM
   cd "$WEBSITE_DIR"
   ASPNETCORE_ENVIRONMENT=Development \
   HCaptcha__DisableInDevelopment=true \
+  Directories__AdminBundle="$ROOT_DIR/services/admin/public" \
   dotnet run --no-launch-profile
 ) &
 DOTNET_PID=$!

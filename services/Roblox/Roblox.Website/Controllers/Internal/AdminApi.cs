@@ -90,8 +90,18 @@ public class AdminApiController : ControllerBase
 #endif
         {
             adminStaticMux.WaitOne();
-            adminBundleJs = System.IO.File.ReadAllText(Configuration.AdminBundleDirectory + "/build/bundle.js");
-            adminStaticMux.ReleaseMutex();
+            try
+            {
+#if DEBUG
+                adminBundleJs = System.IO.File.ReadAllText(Configuration.AdminBundleDirectory + "/build/bundle.js");
+#else
+                adminBundleJs ??= System.IO.File.ReadAllText(Configuration.AdminBundleDirectory + "/build/bundle.js");
+#endif
+            }
+            finally
+            {
+                adminStaticMux.ReleaseMutex();
+            }
         }
         return Content(adminBundleJs, "application/javascript");
     }
@@ -113,8 +123,18 @@ public class AdminApiController : ControllerBase
 #endif
         {
             adminStaticMux.WaitOne();
-            adminBundleCss = System.IO.File.ReadAllText(Configuration.AdminBundleDirectory + "/build/bundle.css");
-            adminStaticMux.ReleaseMutex();
+            try
+            {
+#if DEBUG
+                adminBundleCss = System.IO.File.ReadAllText(Configuration.AdminBundleDirectory + "/build/bundle.css");
+#else
+                adminBundleCss ??= System.IO.File.ReadAllText(Configuration.AdminBundleDirectory + "/build/bundle.css");
+#endif
+            }
+            finally
+            {
+                adminStaticMux.ReleaseMutex();
+            }
         }
         return Content(adminBundleCss, "text/css");
     }
@@ -125,11 +145,17 @@ public class AdminApiController : ControllerBase
     {
         if (!IsLoggedIn() || !await IsStaff(userSession.userId)) return Redirect("/home");
         
-       if (adminBundleHtml == null)
+        if (adminBundleHtml == null)
         {
             adminStaticMux.WaitOne();
-            adminBundleHtml = System.IO.File.ReadAllText(Configuration.AdminBundleDirectory + "/index.html");
-            adminStaticMux.ReleaseMutex();
+            try
+            {
+                adminBundleHtml ??= System.IO.File.ReadAllText(Configuration.AdminBundleDirectory + "/index.html");
+            }
+            finally
+            {
+                adminStaticMux.ReleaseMutex();
+            }
         }
         return Content(adminBundleHtml, "text/html");
     }
