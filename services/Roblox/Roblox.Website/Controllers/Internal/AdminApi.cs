@@ -58,6 +58,18 @@ public class AdminApiController : ControllerBase
     private static readonly Mutex adminStaticMux = new();
     private static readonly string adminRandomUrlPart = Guid.NewGuid().ToString();
 
+    private static void AcquireAdminStaticMutex()
+    {
+        try
+        {
+            adminStaticMux.WaitOne();
+        }
+        catch (AbandonedMutexException)
+        {
+            // WaitOne grants ownership before reporting an abandoned mutex.
+        }
+    }
+
     private bool IsLoggedIn()
     {
         return base.userSession != null;
@@ -89,7 +101,7 @@ public class AdminApiController : ControllerBase
         if (adminBundleJs == null)
 #endif
         {
-            adminStaticMux.WaitOne();
+            AcquireAdminStaticMutex();
             try
             {
 #if DEBUG
@@ -122,7 +134,7 @@ public class AdminApiController : ControllerBase
         if (adminBundleCss == null)
 #endif
         {
-            adminStaticMux.WaitOne();
+            AcquireAdminStaticMutex();
             try
             {
 #if DEBUG
@@ -147,7 +159,7 @@ public class AdminApiController : ControllerBase
         
         if (adminBundleHtml == null)
         {
-            adminStaticMux.WaitOne();
+            AcquireAdminStaticMutex();
             try
             {
                 adminBundleHtml ??= System.IO.File.ReadAllText(Configuration.AdminBundleDirectory + "/index.html");
